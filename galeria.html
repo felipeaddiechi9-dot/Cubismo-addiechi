@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Galería de obras cubistas de Picasso, Braque, Juan Gris, Fernand Léger y Robert Delaunay.">
+  <title>Cubismo | Galería</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+
+  <!-- Tipografías de Google Fonts: Alegreya (títulos) y Open Sans (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,700;0,800;1,400;1,700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap">
+
+  <!-- Hoja de estilos única del sitio -->
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <!-- JavaScript externo: "defer" lo ejecuta cuando el HTML terminó de cargarse -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Link oculto para saltar el menú con el teclado (accesibilidad) -->
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= HEADER (igual en todas las páginas) ================= -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">
+        <img src="img/logocubismo.png" alt="Logo de Cubismo: retrato de perfil en estilo cubista, en blanco y negro. Ir al inicio" width="64" height="64">
+      </a>
+
+      <!-- Botón hamburguesa: solo se ve en mobile y tablet -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+      </button>
+
+      <!-- Agrupa navegación y botones para poder desplegarlos juntos en mobile -->
+      <div class="menu" id="menu-principal">
+        <nav class="nav-principal" aria-label="Menú principal">
+          <ul>
+            <li><a href="cubismo.html">Cubismo</a></li>
+            <li><a href="picasso.html" title="Pablo Picasso">Artista 1</a></li>
+            <li><a href="braque.html" title="Georges Braque">Artista 2</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="exclusivo.html">Exclusivo</a></li>
+          </ul>
+        </nav>
+        <div class="header-botones">
+          <a class="btn btn--claro" href="contacto.html">Contacto</a>
+          <a class="btn btn--claro" href="login.html">Iniciar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO interno (40vh) -->
+    <section class="hero hero--interna hero--galeria">
+      <div class="hero__contenido">
+        <h1 class="hero__titulo">Galería</h1>
+      </div>
+    </section>
+
+    <!-- GRILLA DE OBRAS
+         Cada obra es un <figure> con un link a la imagen grande.
+         Sin JavaScript el link abre la imagen; con JavaScript se abre el lightbox. -->
+    <section class="seccion" aria-labelledby="titulo-obras">
+      <div class="contenedor">
+        <h2 class="titulo-seccion" id="titulo-obras">Obras</h2>
+
+        <div class="galeria">
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/lasseñoritas.webp">
+              <img src="img/lasseñoritas.webp" alt="Les Demoiselles d'Avignon: cinco figuras femeninas angulosas, dos con rostros de máscara africana" width="1500" height="1554" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Les Demoiselles d'Avignon</span>
+              <span class="galeria__autor">Pablo Picasso · 1907</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/casasenlaestaque.jpeg">
+              <img src="img/casasenlaestaque.jpeg" alt="Casas en L'Estaque: casas como cubos ocres entre árboles verdes" width="735" height="918" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Casas en L'Estaque</span>
+              <span class="galeria__autor">Georges Braque · 1908</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/desnudos.jpg">
+              <img src="img/desnudos.jpg" alt="Desnudos en el bosque de Léger: leñadores y árboles convertidos en cilindros metálicos grises y verdes" width="800" height="567" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Desnudos en el bosque</span>
+              <span class="galeria__autor">Fernand Léger · 1909–1911</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/retrato.webp">
+              <img src="img/retrato.webp" alt="Retrato de Ambroise Vollard: rostro de un hombre calvo que surge entre facetas grises y ocres" width="365" height="532" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Retrato de Ambroise Vollard</span>
+              <span class="galeria__autor">Pablo Picasso · 1910</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/violin.jpg">
+              <img src="img/violin.jpg" alt="Violín y candelero: un violín y un candelabro fragmentados en planos grises y marrones" width="595" height="744" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Violín y candelero</span>
+              <span class="galeria__autor">Georges Braque · 1910</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/torre.jpg">
+              <img src="img/torre.jpg" alt="Torre Eiffel de Delaunay: la torre roja fragmentada y torcida entre edificios que parecen caerse" width="876" height="1280" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Torre Eiffel</span>
+              <span class="galeria__autor">Robert Delaunay · 1911</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/guitarra.jpg">
+              <img src="img/guitarra.jpg" alt="Hombre con guitarra de Braque: figura sentada descompuesta en planos marrones" width="554" height="800" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Hombre con guitarra</span>
+              <span class="galeria__autor">Georges Braque · 1911–1912</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/picasoretrato.webp">
+              <img src="img/picasoretrato.webp" alt="Retrato de Pablo Picasso por Juan Gris: el pintor con paleta en la mano, construido con planos azules, grises y marrones" width="1500" height="1908" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Retrato de Pablo Picasso</span>
+              <span class="galeria__autor">Juan Gris · 1912</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/naturaleza01.webp">
+              <img src="img/naturaleza01.webp" alt="Naturaleza muerta con silla de rejilla: obra ovalada con un hule que imita esterilla, enmarcada con una soga" width="1280" height="977" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Naturaleza muerta con silla de rejilla</span>
+              <span class="galeria__autor">Pablo Picasso · 1912</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/naturaleza.webp">
+              <img src="img/naturaleza.webp" alt="Naturaleza muerta con mantel a cuadros de Juan Gris: botella, copa y frutas sobre una mesa con mantel a cuadros, en planos de colores vivos" width="907" height="1200" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Naturaleza muerta con mantel a cuadros</span>
+              <span class="galeria__autor">Juan Gris · 1915</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/laciudad.webp">
+              <img src="img/laciudad.webp" alt="La ciudad de Léger: carteles, escaleras, postes y figuras mecánicas en colores planos y brillantes" width="1500" height="1158" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">La ciudad</span>
+              <span class="galeria__autor">Fernand Léger · 1919</span>
+            </figcaption>
+          </figure>
+
+          <figure class="galeria__item reveal">
+            <a class="galeria__enlace" href="img/guernica.webp">
+              <img src="img/guernica.webp" alt="Guernica: mural en blanco, negro y grises con un toro, un caballo herido y figuras que gritan" width="1500" height="680" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="galeria__titulo">Guernica</span>
+              <span class="galeria__autor">Pablo Picasso · 1937</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX: ventana modal que se abre con JavaScript (main.js, sección 6).
+       Arranca oculta con el atributo "hidden". -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de obras" hidden>
+    <button class="lightbox__cerrar" type="button" aria-label="Cerrar visor">&times;</button>
+    <button class="lightbox__flecha lightbox__flecha--anterior" type="button" aria-label="Obra anterior">&#8249;</button>
+    <figure class="lightbox__figura">
+      <img class="lightbox__imagen" src="img/picasso-demoiselles-avignon.jpg" alt="">
+      <figcaption class="lightbox__texto"></figcaption>
+    </figure>
+    <button class="lightbox__flecha lightbox__flecha--siguiente" type="button" aria-label="Obra siguiente">&#8250;</button>
+  </div>
+
+  <!-- ================= FOOTER (igual en todas las páginas) ================= -->
+  <footer class="site-footer">
+    <div class="contenedor">
+      <p class="site-footer__copy">Cubismo 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

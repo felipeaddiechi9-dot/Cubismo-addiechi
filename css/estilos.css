@@ -1,0 +1,1952 @@
+@charset "UTF-8";
+/* ==========================================================================
+   CUBISMO · estilos.css
+   Hoja de estilos única del sitio (enlazada desde todas las páginas).
+   Enfoque MOBILE FIRST: primero se escriben los estilos para celulares y
+   al final, con media queries, se adaptan a tablet (768px) y escritorio (1024px).
+
+   ÍNDICE
+   1.  Variables (colores, tipografías, medidas)
+   2.  Reset y estilos base
+   3.  Utilidades (contenedor, botones, títulos, accesibilidad)
+   4.  Animación de aparición al hacer scroll
+   5.  Header y navegación
+   6.  Hero (portada con imagen de fondo)
+   7.  Secciones y bloques de contenido
+   8.  Home: cifras y tarjetas de acceso
+   9.  Páginas internas: etapas, listas, obras, línea de tiempo
+   10. Galería y lightbox
+   11. Quiz exclusivo (juego de preguntas)
+   12. Formularios (contacto y login)
+   13. Footer
+   14. Media queries: TABLET (min-width: 768px)
+   15. Media queries: ESCRITORIO (min-width: 1024px)
+   16. Movimiento reducido (accesibilidad)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. VARIABLES
+   ========================================================================== */
+:root {
+  /* Colores: base negra y blanca de alto contraste.
+     El "acento" (antes violeta) ahora es blanco en todo el sitio: se mantienen
+     los nombres de las variables para no tener que cambiar cada regla. */
+  --color-negro: #000000;
+  --color-carbon: #111111;
+  --color-grafito: #1c1c1c;
+  --color-borde: #333333;
+  --color-blanco: #ffffff;
+  --color-crema: #f4ecdd;       /* fondo claro inspirado en el lienzo */
+  --color-gris: #bdbdbd;
+  --color-gris-oscuro: #4a4a4a;
+  --color-violeta: var(--color-blanco);        /* acento: líneas, subrayados */
+  --color-violeta-claro: var(--color-blanco);  /* acento: negritas, cifras */
+  --color-error: #ff7070;
+  --color-ok: #6bdc9a;
+
+  /* Tipografías (Google Fonts, con alternativas del sistema) */
+  --fuente-titulos: "Alegreya", Georgia, "Times New Roman", serif;
+  --fuente-texto: "Open Sans", Arial, Helvetica, sans-serif;
+
+  /* Medidas */
+  --alto-header: 90px;
+  --alto-header-chico: 68px;
+  --ancho-max: 1200px;
+  --radio-pildora: 999px;       /* border-radius "completo" para botones */
+  --transicion: 0.3s ease;
+}
+
+
+/* ==========================================================================
+   2. RESET Y ESTILOS BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-blanco);
+  background-color: var(--color-negro);
+}
+
+/* Evita el scroll de la página cuando el lightbox está abierto */
+body.sin-scroll {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 0.5em;
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+/* El atributo hidden siempre oculta, aunque la clase defina otro display */
+[hidden] {
+  display: none !important;
+}
+
+/* Foco visible para quienes navegan con teclado */
+:focus-visible {
+  outline: 3px solid var(--color-violeta);
+  outline-offset: 3px;
+}
+
+
+/* ==========================================================================
+   3. UTILIDADES
+   ========================================================================== */
+
+/* Contenedor centrado con ancho máximo */
+.contenedor {
+  width: min(var(--ancho-max), 100% - 2rem);
+  margin-inline: auto;
+}
+
+/* Link "Saltar al contenido": aparece solo al recibir foco con Tab */
+.salto {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 300;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radio-pildora);
+  background-color: var(--color-blanco);
+  color: var(--color-negro);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.salto:focus {
+  top: 1rem;
+}
+
+/* Oculta un texto a la vista pero lo deja disponible para lectores de pantalla */
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Botones (siempre con forma de píldora) ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.6em 1.6em;
+  border: 2px solid transparent;
+  border-radius: var(--radio-pildora);
+  font-family: var(--fuente-texto);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transicion), color var(--transicion),
+    border-color var(--transicion), transform var(--transicion);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Blanco con texto negro (header) */
+.btn--claro {
+  background-color: var(--color-blanco);
+  border-color: var(--color-blanco);
+  color: var(--color-negro);
+}
+
+.btn--claro:hover,
+.btn--claro.is-active {
+  background-color: var(--color-violeta);
+  border-color: var(--color-violeta);
+  color: var(--color-blanco);
+}
+
+/* Negro con texto serif espaciado (hero). En hover se invierte. */
+.btn--oscuro {
+  padding: 0.8em 2.4em;
+  background-color: var(--color-negro);
+  border-color: var(--color-negro);
+  color: var(--color-blanco);
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.btn--oscuro:hover {
+  background-color: var(--color-blanco);
+  border-color: var(--color-negro);
+  color: var(--color-negro);
+}
+
+/* Solo borde (sobre fondos negros) */
+.btn--contorno {
+  background-color: transparent;
+  border-color: var(--color-blanco);
+  color: var(--color-blanco);
+}
+
+.btn--contorno:hover {
+  background-color: var(--color-blanco);
+  color: var(--color-negro);
+}
+
+/* Violeta (acciones principales de formularios) */
+.btn--violeta {
+  background-color: var(--color-violeta);
+  border-color: var(--color-violeta);
+  color: var(--color-blanco);
+}
+
+.btn--violeta:hover {
+  background-color: var(--color-blanco);
+  border-color: var(--color-blanco);
+  color: var(--color-negro);
+}
+
+/* ---------- Títulos de sección con "plano" violeta inclinado ---------- */
+.titulo-seccion {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.35em;
+  font-size: clamp(2rem, 6vw, 3rem);
+  text-transform: uppercase;
+}
+
+.titulo-seccion::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+  height: 6px;
+  background-color: var(--color-violeta);
+  transform: skewX(-35deg);
+  transform-origin: left;
+}
+
+.bajada {
+  max-width: 65ch;
+  font-size: 1.1rem;
+}
+
+
+/* ==========================================================================
+   4. ANIMACIÓN DE APARICIÓN AL HACER SCROLL
+   main.js agrega la clase "js" al <html> y "is-visible" a cada elemento
+   ".reveal" cuando entra en pantalla (IntersectionObserver).
+   Si JavaScript no funciona, el contenido se ve igual (no queda oculto).
+   IMPORTANTE: .reveal se usa en contenedores, no en elementos que tengan su
+   propio transform en :hover, para que las dos transiciones no se pisen.
+   ========================================================================== */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(40px) skewY(2deg);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ==========================================================================
+   5. HEADER Y NAVEGACIÓN
+   ========================================================================== */
+.site-header {
+  position: sticky;              /* queda fijo arriba al hacer scroll */
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-negro);
+  border-bottom: 2px solid var(--color-violeta);
+}
+
+.site-header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: var(--alto-header);
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
+  transition: height var(--transicion);
+}
+
+/* Clase que agrega main.js al bajar: el header se achica un poco */
+.site-header.is-scrolled .site-header__inner {
+  height: var(--alto-header-chico);
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  flex-shrink: 0;
+  display: block;
+}
+
+.logo img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;               /* la imagen ya trae su propio marco */
+  transition: width var(--transicion), height var(--transicion);
+}
+
+.site-header.is-scrolled .logo img {
+  width: 48px;
+  height: 48px;
+}
+
+/* ---------- Botón hamburguesa (solo mobile y tablet) ---------- */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: transparent;
+  border: 2px solid var(--color-blanco);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.menu-toggle__barra {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-blanco);
+  transition: transform var(--transicion), opacity var(--transicion);
+}
+
+/* Cuando el menú está abierto, las tres barras forman una X */
+.menu-toggle[aria-expanded="true"] .menu-toggle__barra:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__barra:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__barra:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ---------- Panel desplegable (mobile) ---------- */
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem clamp(1rem, 3vw, 2.5rem) 3rem;
+  background-color: var(--color-negro);
+  border-bottom: 2px solid var(--color-violeta);
+  /* borde inferior en diagonal: detalle cubista */
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+}
+
+.menu.is-open {
+  display: flex;
+  animation: desplegar 0.3s ease;
+}
+
+@keyframes desplegar {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.nav-principal ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-principal a {
+  display: block;
+  padding: 0.6rem 0;
+  color: var(--color-blanco);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;   /* el texto va en MAYÚSCULAS desde CSS */
+  transition: color var(--transicion), box-shadow var(--transicion);
+}
+
+.nav-principal a:hover {
+  color: var(--color-violeta-claro);
+}
+
+/* Link de la página actual (clase agregada por main.js) */
+.nav-principal a.is-active {
+  color: var(--color-violeta-claro);
+  box-shadow: inset 0 -3px 0 var(--color-violeta);
+}
+
+.header-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+
+/* ==========================================================================
+   6. HERO
+   ========================================================================== */
+.hero {
+  position: relative;
+  isolation: isolate;          /* crea un contexto para las capas decorativas */
+  display: grid;
+  place-items: center;
+  min-height: 85vh;
+  padding: 3rem 1rem;
+  overflow: hidden;
+  background-color: var(--color-grafito);
+  background-position: center;
+  background-size: cover;      /* la imagen cubre todo el bloque */
+  text-align: center;
+}
+
+/* Degradado suave abajo para que el hero se funda con la sección negra */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, transparent 65%, rgba(0, 0, 0, 0.7));
+}
+
+/* Hero de páginas internas: más bajo */
+.hero--interna {
+  min-height: 40vh;
+}
+
+.hero__contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* H1 blanco dentro de un bloque negro sólido ajustado al texto */
+.hero__titulo {
+  display: inline-block;
+  margin: 0;
+  padding: 0.08em 0.3em 0.15em;
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+  font-family: var(--fuente-titulos);
+  font-size: clamp(3.5rem, 15vw, 9.5rem);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Bloque negro ovalado (píldora) ajustado casi justo al texto */
+.hero--home .hero__titulo,
+.hero--historia .hero__titulo,
+.hero--picasso .hero__titulo,
+.hero--braque .hero__titulo,
+.hero--galeria .hero__titulo,
+.hero--exclusivo .hero__titulo {
+  padding: 0.06em 0.45em 0.08em; /* el padding lateral deja lugar a las puntas redondeadas */
+  border-radius: var(--radio-pildora);
+  line-height: 0.9;
+}
+
+.hero--interna .hero__titulo {
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
+}
+
+/* Cubismo, artistas, galería y exclusivo: mismo título sobre la misma imagen */
+.hero--historia .hero__titulo,
+.hero--picasso .hero__titulo,
+.hero--braque .hero__titulo,
+.hero--galeria .hero__titulo,
+.hero--exclusivo .hero__titulo {
+  font-size: clamp(2.2rem, 7.65vw, 4.9rem);
+  padding-block: 0.18em 0.2em;   /* píldora un poco más alta que en la home */
+}
+
+/* Texto breve debajo del H1 en páginas internas */
+.hero__bajada {
+  margin: 0;
+  padding: 0.4em 1.2em;
+  max-width: 40ch;
+  background-color: var(--color-blanco);
+  color: var(--color-negro);
+  font-weight: 600;
+  clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%);
+}
+
+/* Imagen de fondo de cada hero (rutas relativas al archivo CSS) */
+.hero--home      { background-image: url("../img/heroimg03.png"); }
+.hero--historia  { background-image: url("../img/QUEESELCU02.png"); }
+.hero--picasso   { background-image: url("../img/QUEESELCU02.png"); }
+.hero--braque    { background-image: url("../img/QUEESELCU02.png"); }
+.hero--galeria   { background-image: url("../img/QUEESELCU02.png"); }
+.hero--exclusivo { background-image: url("../img/QUEESELCU02.png"); }
+.hero--contacto  { background-image: url("../img/hero-contacto.jpg"); }
+.hero--login     { background-image: url("../img/hero-login.jpg"); }
+
+
+/* ==========================================================================
+   7. SECCIONES Y BLOQUES DE CONTENIDO
+   ========================================================================== */
+.seccion {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+/* Variante clara: fondo crema y texto negro, para alternar el ritmo */
+.seccion--clara {
+  background-color: var(--color-crema);
+  color: var(--color-negro);
+}
+
+.seccion--grafito {
+  background-color: var(--color-carbon);
+}
+
+/* Dos columnas (texto + imagen). En mobile se apilan. */
+.dos-columnas {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+.texto p {
+  max-width: 65ch;
+}
+
+.texto strong {
+  color: var(--color-violeta-claro);
+}
+
+.seccion--clara .texto strong {
+  color: var(--color-violeta);
+}
+
+/* Figura con recorte poligonal y plano violeta superpuesto por detrás */
+.figura-cubista {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+}
+
+.figura-cubista::before {
+  content: "";
+  position: absolute;
+  inset: 8% -4% 10% 10%;
+  z-index: -1;
+  background-color: var(--color-violeta);
+  clip-path: polygon(12% 0, 100% 8%, 90% 100%, 0 85%);
+  transform: rotate(4deg);
+}
+
+.figura-cubista img {
+  width: 100%;
+  clip-path: polygon(0 4%, 96% 0, 100% 94%, 5% 100%);
+}
+
+/* Variante recta: sin inclinación ni plano violeta detrás (foto de la home) */
+.figura-cubista--recta::before {
+  content: none;
+}
+
+.figura-cubista--recta img {
+  clip-path: none;
+}
+
+.figura-cubista figcaption {
+  margin-top: 0.9rem;
+  color: var(--color-gris);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.seccion--clara .figura-cubista figcaption {
+  color: var(--color-gris-oscuro);
+}
+
+/* Llamado a la acción al final de las páginas */
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 2.5rem 1.5rem;
+  background-color: var(--color-negro);
+  border-left: 8px solid var(--color-violeta);
+  clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 94%);
+}
+
+.cta h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+}
+
+.cta p {
+  margin: 0;
+}
+
+.cta__botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+
+/* ==========================================================================
+   8. HOME: CIFRAS Y TARJETAS DE ACCESO
+   ========================================================================== */
+
+/* Franja de fechas clave */
+.cifras {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cifras li {
+  min-height: 260px;
+  padding: 2.5rem 3rem 2.5rem 2rem;
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+  font-size: 1.15rem;
+  clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%);
+}
+
+.cifras__numero {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--color-violeta-claro);
+  font-family: var(--fuente-titulos);
+  font-size: clamp(3.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Tarjetas con recorte geométrico */
+.tarjetas {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-grafito);
+  clip-path: polygon(0 0, 100% 3%, 97% 100%, 2% 97%);
+  transition: clip-path 0.5s ease, transform 0.5s ease;
+}
+
+/* Dos "fragmentos" (planos semitransparentes) que aparecen en hover */
+.tarjeta::before,
+.tarjeta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;        /* no bloquean los clics en los botones */
+  transition: clip-path 0.5s ease;
+}
+
+.tarjeta::before {
+  background-color: rgba(123, 63, 228, 0.6);
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+.tarjeta::after {
+  background-color: rgba(255, 255, 255, 0.3);
+  clip-path: polygon(100% 0, 100% 0, 100% 0);
+}
+
+.tarjeta:hover::before,
+.tarjeta:focus-within::before {
+  clip-path: polygon(0 0, 65% 0, 0 40%);
+}
+
+.tarjeta:hover::after,
+.tarjeta:focus-within::after {
+  clip-path: polygon(45% 0, 100% 0, 100% 30%);
+}
+
+/* En hover la tarjeta cambia su recorte y se inclina ("se fragmenta") */
+.tarjeta:hover,
+.tarjeta:focus-within {
+  clip-path: polygon(3% 2%, 100% 0, 98% 97%, 0 100%);
+  transform: rotate(-1.5deg) scale(1.02);
+}
+
+.tarjeta:nth-child(2):hover,
+.tarjeta:nth-child(2):focus-within {
+  transform: rotate(1.5deg) scale(1.02);
+}
+
+.tarjeta__imagen {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.tarjeta__cuerpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem 1.5rem 2.25rem;
+}
+
+.tarjeta__cuerpo h3 {
+  margin: 0;
+  font-size: 1.9rem;
+  text-transform: uppercase;
+}
+
+.tarjeta__cuerpo p {
+  margin: 0;
+  color: var(--color-gris);
+}
+
+.tarjeta__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+
+/* ==========================================================================
+   9. PÁGINAS INTERNAS
+   ========================================================================== */
+
+/* ---------- Etapas del cubismo ---------- */
+.etapas {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.etapa {
+  position: relative;
+  padding: 2.5rem 1.5rem 1.75rem;
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+  clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
+}
+
+.etapa__numero {
+  display: block;
+  color: var(--color-violeta-claro);
+  font-family: var(--fuente-titulos);
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.etapa h3 {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 1.6rem;
+}
+
+.etapa__fecha {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--color-gris);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ---------- Lista con viñetas en forma de rombo ---------- */
+.lista-geometrica {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lista-geometrica li {
+  position: relative;
+  padding-left: 2.25rem;
+}
+
+.lista-geometrica li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 1.1rem;
+  height: 1.1rem;
+  background-color: var(--color-violeta);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.lista-geometrica h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.35rem;
+}
+
+.lista-geometrica p {
+  margin: 0;
+}
+
+/* ---------- Planos (influencias en otras vanguardias) ---------- */
+.planos {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.plano {
+  padding: 1.5rem;
+  border: 2px solid var(--color-violeta);
+  background-color: var(--color-negro);
+  transition: transform var(--transicion), background-color var(--transicion);
+}
+
+.plano:hover {
+  background-color: var(--color-grafito);
+  transform: skewX(-4deg);
+}
+
+.plano h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.4rem;
+}
+
+.plano p {
+  margin: 0;
+  color: var(--color-gris);
+  font-size: 0.95rem;
+}
+
+/* ---------- Obras clave ---------- */
+.obras {
+  display: grid;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+
+.obra h3 {
+  margin: 1.5rem 0 0.25rem;
+  font-size: 1.6rem;
+}
+
+.obra__datos {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--color-violeta);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.seccion:not(.seccion--clara) .obra__datos {
+  color: var(--color-violeta-claro);
+}
+
+/* ---------- Sección blanca (fondo blanco, texto negro) ---------- */
+.seccion--blanca {
+  background-color: var(--color-blanco);
+  color: var(--color-negro);
+}
+
+.seccion--blanca .titulo-seccion::after {
+  background-color: var(--color-negro);
+}
+
+/* ---------- Línea de tiempo horizontal ----------
+   Las fechas van en fila sobre una línea negra. Si no entran (celular),
+   la lista se desliza de costado y cada fecha "encaja" al soltar. */
+.linea-tiempo {
+  --gap-linea: 1rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(130px, 1fr);
+  gap: var(--gap-linea);
+  margin: 2.5rem 0 0;
+  padding: 0 0 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  list-style: none;
+}
+
+.linea-tiempo li {
+  position: relative;
+  padding-top: 2.75rem;
+  scroll-snap-align: start;
+}
+
+/* Tramo de línea de cada fecha (se une con el de la siguiente) */
+.linea-tiempo li::after {
+  content: "";
+  position: absolute;
+  top: calc(0.75rem - 1px);
+  left: 0;
+  right: calc(-1 * var(--gap-linea));
+  height: 3px;
+  background-color: var(--color-negro);
+}
+
+.linea-tiempo li:last-child::after {
+  right: 0;
+}
+
+/* Rombo sobre la línea para cada fecha */
+.linea-tiempo li::before {
+  content: "";
+  position: absolute;
+  top: calc(0.75rem - 9px);
+  left: 0;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  background-color: var(--color-blanco);
+  border: 3px solid var(--color-negro);
+  transform: rotate(45deg);
+}
+
+/* El rombo se rellena de negro al pasar el mouse por la fecha */
+.linea-tiempo li:hover::before {
+  background-color: var(--color-negro);
+}
+
+.linea-tiempo time {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--color-negro);
+  font-family: var(--fuente-titulos);
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.linea-tiempo p {
+  margin: 0;
+  color: var(--color-gris-oscuro);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* ---------- Cita corta dentro del texto ---------- */
+.cita-corta {
+  margin: 2rem 0;
+  padding: 1rem 0 1rem 1.5rem;
+  border-left: 6px solid var(--color-violeta);
+  font-family: var(--fuente-titulos);
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.cita-corta p {
+  margin: 0 0 0.5rem;
+}
+
+.cita-corta footer {
+  font-family: var(--fuente-texto);
+  font-size: 0.9rem;
+  font-style: normal;
+}
+
+
+/* ==========================================================================
+   10. GALERÍA Y LIGHTBOX
+   ========================================================================== */
+.galeria {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.galeria__item {
+  margin: 0;
+  background-color: var(--color-grafito);
+}
+
+.galeria__enlace {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.galeria__enlace img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: transform 0.5s ease, clip-path 0.5s ease;
+}
+
+/* En hover la imagen se amplía y se recorta en diagonal */
+.galeria__enlace:hover img,
+.galeria__enlace:focus-visible img {
+  transform: scale(1.06) rotate(-1deg);
+  clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
+}
+
+/* Etiqueta "Ver obra" que aparece sobre la imagen */
+.galeria__enlace::after {
+  content: "Ver obra";
+  position: absolute;
+  left: 50%;
+  bottom: 1.25rem;
+  padding: 0.4em 1.4em;
+  border-radius: var(--radio-pildora);
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate(-50%, 10px);
+  transition: opacity var(--transicion), transform var(--transicion);
+}
+
+.galeria__enlace:hover::after,
+.galeria__enlace:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.galeria__item figcaption {
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 3px solid var(--color-violeta);
+}
+
+.galeria__titulo {
+  display: block;
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.galeria__autor {
+  display: block;
+  color: var(--color-gris);
+  font-size: 0.9rem;
+}
+
+/* ---------- Lightbox (ventana modal) ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4.5rem 0.5rem 1.5rem;
+  background-color: rgba(0, 0, 0, 0.94);
+  animation: aparecer 0.25s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox__figura {
+  grid-column: 2;
+  justify-self: center;       /* la figura ocupa solo lo que mide la imagen */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  max-width: 100%;
+}
+
+.lightbox__imagen {
+  width: auto;
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border: 4px solid var(--color-blanco);
+}
+
+.lightbox__texto {
+  text-align: center;
+}
+
+.lightbox__texto strong {
+  display: block;
+  font-family: var(--fuente-titulos);
+  font-size: 1.4rem;
+}
+
+.lightbox__texto span {
+  color: var(--color-gris);
+}
+
+.lightbox__cerrar,
+.lightbox__flecha {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--color-blanco);
+  border-radius: 50%;
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--transicion), color var(--transicion);
+}
+
+.lightbox__cerrar:hover,
+.lightbox__flecha:hover {
+  background-color: var(--color-blanco);
+  color: var(--color-negro);
+}
+
+.lightbox__cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.lightbox__flecha--anterior {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.lightbox__flecha--siguiente {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+
+/* ==========================================================================
+   11. QUIZ EXCLUSIVO
+   Juego de preguntas de exclusivo.html. El HTML solo tiene el contenedor
+   #quiz: todo lo de adentro lo genera js/quiz.js.
+   Estética en blanco y negro, con píldoras y recortes geométricos.
+   ========================================================================== */
+
+/* Contenedor general: centrado y con un ancho cómodo para leer */
+.quiz {
+  max-width: 820px;
+  margin-inline: auto;
+}
+
+/* ---------- Tarjeta (cada "pantalla" del juego) ---------- */
+.quiz__tarjeta {
+  position: relative;
+  padding: 2.5rem 1.25rem 2.75rem;
+  background-color: var(--color-carbon);
+  border-top: 6px solid var(--color-blanco);
+  /* esquina inferior izquierda cortada en diagonal: detalle cubista */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 6% 100%, 0 94%);
+  /* transición suave al cambiar de pregunta (ver @keyframes quiz-entrar) */
+  animation: quiz-entrar 0.45s ease;
+}
+
+/* Plano blanco triangular en la esquina superior derecha */
+.quiz__tarjeta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 70px;
+  background-color: var(--color-blanco);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+@keyframes quiz-entrar {
+  from {
+    opacity: 0;
+    transform: translateX(30px) skewX(-3deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Títulos de la tarjeta: reciben el foco al cambiar de pantalla, pero sin
+   dibujar el recuadro (el foco es solo para que el lector de pantalla los lea) */
+.quiz__tarjeta [tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* ---------- Pantalla de inicio ---------- */
+.quiz__inicio {
+  text-align: center;
+}
+
+.quiz__inicio .quiz__pregunta {
+  padding-inline: 2rem;       /* que el texto no toque el triángulo blanco */
+}
+
+.quiz__intro {
+  max-width: 45ch;
+  margin: 0 auto 2rem;
+  color: var(--color-gris);
+}
+
+/* ---------- Estado: "Pregunta 3 de 8" y barra de progreso ---------- */
+.quiz__estado {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--color-gris);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.quiz__barra {
+  height: 10px;
+  margin-bottom: 2rem;
+  margin-right: 70px;         /* deja libre la esquina del triángulo */
+  border: 2px solid var(--color-blanco);
+  transform: skewX(-20deg);   /* barra inclinada, como el subrayado de los títulos */
+}
+
+.quiz__barra-relleno {
+  height: 100%;
+  background-color: var(--color-blanco);
+  transition: width 0.5s ease;
+}
+
+/* ---------- Pregunta ---------- */
+.quiz__pregunta {
+  margin: 0 0 1.5rem;
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* Imagen de la obra: en blanco y negro y con marco blanco */
+.quiz__obra {
+  margin: 0 0 1.75rem;
+}
+
+.quiz__obra img {
+  width: auto;
+  max-width: 100%;
+  max-height: 320px;
+  margin-inline: auto;
+  border: 4px solid var(--color-blanco);
+  filter: grayscale(1);
+}
+
+/* ---------- Opciones (píldoras) ---------- */
+.quiz__opciones {
+  display: grid;
+  gap: 0.75rem;               /* en mobile: una debajo de la otra */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quiz__opcion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.7em 1.4em;
+  border: 2px solid var(--color-blanco);
+  border-radius: var(--radio-pildora);
+  background-color: transparent;
+  color: var(--color-blanco);
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transicion), color var(--transicion),
+    opacity var(--transicion);
+}
+
+/* Hover y foco con teclado: se invierten los colores */
+.quiz__opcion:hover:not(:disabled),
+.quiz__opcion:focus-visible {
+  background-color: var(--color-blanco);
+  color: var(--color-negro);
+}
+
+/* Después de responder: las opciones quedan bloqueadas y más apagadas */
+.quiz__opcion:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+/* Respuesta correcta: fondo blanco, texto negro y ✓ */
+.quiz__opcion.is-correcta {
+  background-color: var(--color-blanco);
+  color: var(--color-negro);
+  opacity: 1;
+}
+
+/* Opción equivocada que eligió el usuario: borde punteado, tachada y ✗ */
+.quiz__opcion.is-incorrecta {
+  border-style: dashed;
+  opacity: 1;
+}
+
+/* Se tacha solo el texto, no el símbolo ✗ */
+.quiz__opcion.is-incorrecta .quiz__texto {
+  text-decoration: line-through;
+}
+
+/* Símbolo ✓ o ✗ al final de la píldora */
+.quiz__marca {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+
+/* ---------- Mensaje después de responder y botón SIGUIENTE ---------- */
+.quiz__feedback {
+  min-height: 1.7em;          /* reserva el lugar para que nada "salte" */
+  margin: 1.25rem 0 0;
+  font-weight: 700;
+}
+
+.quiz__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.quiz__inicio .quiz__acciones,
+.quiz__final .quiz__acciones {
+  justify-content: center;
+}
+
+/* Botones COMENZAR / SIGUIENTE / VOLVER A JUGAR (sobre .btn .btn--contorno) */
+.quiz__boton {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ---------- Sesión: barra del usuario y pantalla de bloqueo ---------- */
+
+/* "Sesión iniciada como ... · Cerrar sesión" (arriba del juego) */
+.quiz__sesion {
+  max-width: 820px;
+  margin: 0 auto 1rem;
+  color: var(--color-gris);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Candado dentro de un rombo blanco, sobre el título */
+.quiz__candado {
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto 1.25rem;
+  background-color: var(--color-blanco);
+  font-size: 1.6rem;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+/* ---------- Pantalla final ---------- */
+.quiz__final {
+  text-align: center;
+}
+
+.quiz__puntaje {
+  display: block;
+  margin: 0.5rem 0 0.25rem;
+  font-family: var(--fuente-titulos);
+  font-size: clamp(4rem, 14vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.quiz__mensaje {
+  margin: 0 0 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Repaso de las preguntas falladas */
+.quiz__repaso {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.quiz__repaso-titulo {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+}
+
+.quiz__repaso ol {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quiz__repaso li {
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--color-blanco);
+  background-color: var(--color-negro);
+}
+
+.quiz__repaso p {
+  margin: 0 0 0.35rem;
+}
+
+.quiz__repaso-pregunta {
+  font-weight: 700;
+}
+
+.quiz__repaso-tuya {
+  color: var(--color-gris);
+  text-decoration: line-through;
+}
+
+.quiz__repaso a {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+   12. FORMULARIOS
+   ========================================================================== */
+.formulario {
+  display: grid;
+  gap: 1.25rem;
+  padding: 2rem 1.25rem;
+  background-color: var(--color-negro);
+  border: 1px solid var(--color-borde);
+  border-top: 6px solid var(--color-violeta);
+}
+
+.formulario--angosto {
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+/* Formulario solo en la página, centrado (contacto) */
+.formulario--centrado {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.formulario__grupo {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.campo label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.campo__opcional {
+  color: var(--color-gris);
+  font-weight: 400;
+  text-transform: none;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid var(--color-gris-oscuro);
+  border-radius: var(--radio-pildora);
+  background-color: var(--color-carbon);
+  color: var(--color-blanco);
+  font: inherit;
+  transition: border-color var(--transicion);
+}
+
+.campo textarea {
+  min-height: 160px;
+  border-radius: 1.25rem;
+  resize: vertical;
+}
+
+.campo select option {
+  background-color: var(--color-carbon);
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+  color: #8a8a8a;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: var(--color-violeta);
+  outline: none;
+}
+
+/* :user-invalid marca en rojo solo después de que la persona interactuó */
+.campo input:user-invalid,
+.campo select:user-invalid,
+.campo textarea:user-invalid {
+  border-color: var(--color-error);
+}
+
+.campo__ayuda {
+  color: var(--color-gris);
+  font-size: 0.8rem;
+}
+
+/* Checkbox con su texto al lado */
+.campo--check {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.campo--check input {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.2rem;
+  accent-color: var(--color-violeta);
+}
+
+.campo--check label {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.formulario .btn {
+  justify-self: start;
+}
+
+.formulario__nota {
+  margin: 0;
+  color: var(--color-gris);
+  font-size: 0.85rem;
+}
+
+.formulario__nota a {
+  color: var(--color-violeta-claro);
+}
+
+/* Aviso (error del login / resultado del PHP) */
+.aviso {
+  padding: 1rem 1.25rem;
+  border-left: 5px solid var(--color-violeta);
+  background-color: var(--color-grafito);
+}
+
+.aviso p {
+  margin: 0;
+}
+
+/* Datos de contacto al costado del formulario */
+.datos-contacto {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.datos-contacto li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.datos-contacto strong {
+  display: block;
+  color: var(--color-violeta-claro);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Página de resultado de enviar.php */
+.estado {
+  max-width: 720px;
+  margin-inline: auto;
+  padding: 2.5rem 1.5rem;
+  background-color: var(--color-negro);
+  border-top: 6px solid var(--color-ok);
+}
+
+.estado--error {
+  border-top-color: var(--color-error);
+}
+
+.estado h2 {
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+}
+
+.estado ul {
+  padding-left: 1.25rem;
+}
+
+.estado--error li {
+  color: var(--color-error);
+}
+
+.estado dl {
+  display: grid;
+  gap: 0.25rem 1rem;
+  margin: 1.5rem 0;
+}
+
+.estado dt {
+  color: var(--color-violeta-claro);
+  font-weight: 700;
+}
+
+.estado dd {
+  margin: 0 0 0.5rem;
+}
+
+
+/* ==========================================================================
+   13. FOOTER
+   ========================================================================== */
+/* Footer mínimo: una sola línea con el nombre del sitio y el año */
+.site-footer {
+  padding: 1.5rem 0;
+  background-color: var(--color-negro);
+  border-top: 2px solid var(--color-violeta);
+}
+
+.site-footer__copy {
+  margin: 0;
+  color: var(--color-gris);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+
+/* ==========================================================================
+   13b. SITIO EN BLANCO Y NEGRO
+   El acento violeta se reemplazó por blanco en las variables (sección 1).
+   Acá se corrigen los casos donde blanco sobre blanco/crema no se vería.
+   ========================================================================== */
+
+/* Sobre el fondo crema: líneas, subrayados, negritas y planos en negro */
+.seccion--clara .titulo-seccion::after,
+.seccion--clara .lista-geometrica li::before,
+.seccion--clara .figura-cubista::before {
+  background-color: var(--color-negro);
+}
+
+.seccion--clara .texto strong,
+.seccion--clara .obra__datos {
+  color: var(--color-negro);
+}
+
+.seccion--clara .cita-corta {
+  border-color: var(--color-negro);
+}
+
+/* Botones blancos en hover: se invierten a negro con borde blanco */
+.btn--claro:hover,
+.btn--claro.is-active {
+  background-color: var(--color-negro);
+  border-color: var(--color-blanco);
+  color: var(--color-blanco);
+}
+
+/* Botón de formularios: blanco con texto negro, en hover se invierte */
+.btn--violeta {
+  color: var(--color-negro);
+}
+
+.btn--violeta:hover {
+  background-color: var(--color-negro);
+  border-color: var(--color-blanco);
+  color: var(--color-blanco);
+}
+
+/* Fragmento de las tarjetas en blanco en lugar de violeta */
+.tarjeta::before {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ==========================================================================
+   14. TABLET (desde 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .dos-columnas {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  /* Variante con la imagen a la izquierda */
+  .dos-columnas--invertida > :first-child {
+    order: 2;
+  }
+
+  .cifras {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tarjetas,
+  .etapas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .lista-geometrica,
+  .planos,
+  .obras {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Quiz: opciones en dos columnas y tarjeta con más aire */
+  .quiz__opciones {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quiz__tarjeta {
+    padding: 3rem 3rem 3.5rem;
+  }
+
+  /* Dentro de una columna angosta, la lista vuelve a una sola columna */
+  .dos-columnas .lista-geometrica {
+    grid-template-columns: 1fr;
+  }
+
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .formulario {
+    padding: 2.5rem;
+  }
+
+  .cta {
+    padding: 3rem;
+  }
+
+  .estado {
+    padding: 3rem;
+  }
+
+  .estado dl {
+    grid-template-columns: max-content 1fr;
+  }
+
+  .lightbox {
+    gap: 1.5rem;
+    padding-inline: 1.5rem;
+  }
+
+  .lightbox__cerrar,
+  .lightbox__flecha {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+
+/* ==========================================================================
+   15. ESCRITORIO (desde 1024px)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  /* El header muestra todo el menú en una sola línea */
+  .site-header__inner {
+    justify-content: flex-start;
+    gap: 2.5rem;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  /* El panel deja de ser desplegable: nav a la izquierda, botones a la derecha */
+  .menu {
+    position: static;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    clip-path: none;
+  }
+
+  .nav-principal ul {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav-principal li {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Guiones separadores entre ítems, generados con CSS (no escritos a mano) */
+  .nav-principal li + li::before {
+    content: "-";
+    margin-inline: 0.7em;
+    color: var(--color-blanco);
+    font-weight: 600;
+  }
+
+  .nav-principal a {
+    display: inline-block;
+    padding: 0.3rem 0;
+    font-size: 1.1rem;
+    letter-spacing: 0;
+  }
+
+  .nav-principal ul {
+    margin-left: 4vw;            /* menú en el centro-izquierda, como en el diseño */
+  }
+
+  .header-botones {
+    flex-wrap: nowrap;
+  }
+
+  .header-botones .btn {
+    padding: 0.35em 1.4em;
+    font-size: 1.15rem;
+    font-weight: 400;
+  }
+
+  /* Hero de la home un poco más bajo en escritorio, como en el diseño */
+  .hero--home {
+    min-height: 78vh;
+  }
+
+  .obras {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Nombre y apellido lado a lado solo cuando hay espacio suficiente */
+  .formulario__grupo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .planos,
+  .galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 4rem;
+  }
+}
+
+/* Pantallas muy anchas: 4 columnas en la galería */
+@media (min-width: 1280px) {
+  .galeria {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* ==========================================================================
+   16. MOVIMIENTO REDUCIDO
+   Si la persona configuró su sistema para reducir animaciones, se desactivan.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Qué es el cubismo: origen en París (1907–1914), etapas, características e influencia en otras vanguardias.">
+  <title>Cubismo | Qué es el cubismo</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+
+  <!-- Tipografías de Google Fonts: Alegreya (títulos) y Open Sans (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,700;0,800;1,400;1,700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap">
+
+  <!-- Hoja de estilos única del sitio -->
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <!-- JavaScript externo: "defer" lo ejecuta cuando el HTML terminó de cargarse -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Link oculto para saltar el menú con el teclado (accesibilidad) -->
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= HEADER (igual en todas las páginas) ================= -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">
+        <img src="img/logocubismo.png" alt="Logo de Cubismo: retrato de perfil en estilo cubista, en blanco y negro. Ir al inicio" width="64" height="64">
+      </a>
+
+      <!-- Botón hamburguesa: solo se ve en mobile y tablet -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+      </button>
+
+      <!-- Agrupa navegación y botones para poder desplegarlos juntos en mobile -->
+      <div class="menu" id="menu-principal">
+        <nav class="nav-principal" aria-label="Menú principal">
+          <ul>
+            <li><a href="cubismo.html">Cubismo</a></li>
+            <li><a href="picasso.html" title="Pablo Picasso">Artista 1</a></li>
+            <li><a href="braque.html" title="Georges Braque">Artista 2</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="exclusivo.html">Exclusivo</a></li>
+          </ul>
+        </nav>
+        <div class="header-botones">
+          <a class="btn btn--claro" href="contacto.html">Contacto</a>
+          <a class="btn btn--claro" href="login.html">Iniciar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO interno (40vh) -->
+    <section class="hero hero--interna hero--historia">
+      <div class="hero__contenido">
+        <h1 class="hero__titulo">¿Qué es el cubismo?</h1>
+      </div>
+    </section>
+
+    <!-- ORIGEN -->
+    <section class="seccion" aria-labelledby="titulo-origen">
+      <div class="contenedor dos-columnas">
+        <article class="texto reveal">
+          <h2 class="titulo-seccion" id="titulo-origen">Origen</h2>
+          <p class="bajada">El cubismo nació en <strong>París entre 1907 y 1914</strong>, en los talleres de Montmartre, y es considerado la primera gran vanguardia del siglo XX.</p>
+          <p>Sus creadores fueron <strong>Pablo Picasso</strong> y <strong>Georges Braque</strong>. Los dos partieron de la obra de <strong>Paul Cézanne</strong>, que había propuesto tratar la naturaleza "por medio del cilindro, la esfera y el cono", y de la fuerza expresiva de las <strong>esculturas africanas e ibéricas</strong> que veían en los museos parisinos.</p>
+          <p>En 1907 Picasso terminó <cite>Les Demoiselles d'Avignon</cite>, un cuadro que rompía con la perspectiva tradicional. Un año después, el crítico Louis Vauxcelles describió los paisajes de Braque como hechos de "pequeños cubos", y el nombre quedó. Pronto se sumaron Juan Gris, Fernand Léger, Robert Delaunay, Albert Gleizes y Jean Metzinger. La Primera Guerra Mundial (1914) separó al grupo y cerró la etapa más intensa del movimiento.</p>
+        </article>
+
+        <figure class="figura-cubista figura-cubista--recta reveal">
+          <img src="img/queeselcu001.jpg" alt="Les Demoiselles d'Avignon de Picasso colgado en una sala del museo: cinco figuras femeninas angulosas, dos con rostros similares a máscaras africanas, sobre un fondo de telas azules y ocres" width="1024" height="682" loading="lazy">
+          <figcaption>Pablo Picasso, <cite>Les Demoiselles d'Avignon</cite>, 1907. Museo de Arte Moderno (MoMA), Nueva York.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ETAPAS -->
+    <section class="seccion seccion--clara" aria-labelledby="titulo-etapas">
+      <div class="contenedor">
+        <h2 class="titulo-seccion" id="titulo-etapas">Etapas</h2>
+        <p class="bajada">Los historiadores suelen dividir el movimiento en tres momentos.</p>
+
+        <div class="etapas reveal">
+          <article class="etapa">
+            <span class="etapa__numero">01</span>
+            <h3>Protocubismo</h3>
+            <span class="etapa__fecha">1907 – 1909</span>
+            <p>Etapa de experimentación. Las formas se simplifican en volúmenes geométricos, siguiendo a Cézanne, y aparecen los primeros quiebres de la perspectiva. Colores ocres y verdes.</p>
+          </article>
+
+          <article class="etapa">
+            <span class="etapa__numero">02</span>
+            <h3>Cubismo analítico</h3>
+            <span class="etapa__fecha">1909 – 1912</span>
+            <p>Los objetos se "analizan": se desarman en muchas facetas pequeñas que se superponen. La paleta se reduce a grises, marrones y negros, y a veces el tema es casi irreconocible.</p>
+          </article>
+
+          <article class="etapa">
+            <span class="etapa__numero">03</span>
+            <h3>Cubismo sintético</h3>
+            <span class="etapa__fecha">1912 – 1914</span>
+            <p>En lugar de desarmar, se "sintetiza": formas más simples y planas, vuelve el color y se incorporan materiales reales como papel de diario, etiquetas o tela. Nacen el collage y el papier collé.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARACTERÍSTICAS -->
+    <section class="seccion" aria-labelledby="titulo-caracteristicas">
+      <div class="contenedor dos-columnas dos-columnas--invertida">
+        <div class="texto reveal">
+          <h2 class="titulo-seccion" id="titulo-caracteristicas">Características</h2>
+          <ul class="lista-geometrica">
+            <li>
+              <h3>Descomposición geométrica</h3>
+              <p>Personas y objetos se reducen a planos, cubos, cilindros y conos que se cruzan entre sí.</p>
+            </li>
+            <li>
+              <h3>Múltiples puntos de vista</h3>
+              <p>Un mismo objeto se muestra de frente, de perfil y desde arriba al mismo tiempo, como si el pintor lo recorriera.</p>
+            </li>
+            <li>
+              <h3>Paleta reducida</h3>
+              <p>Sobre todo en la etapa analítica: ocres, grises, marrones y verdes, para que el color no distraiga de la forma.</p>
+            </li>
+            <li>
+              <h3>Collage y papier collé</h3>
+              <p>Desde 1912 se pegan papeles, diarios y partituras sobre el lienzo: la realidad entra literalmente en el cuadro.</p>
+            </li>
+          </ul>
+        </div>
+
+        <figure class="figura-cubista figura-cubista--recta reveal">
+          <img src="img/naturaleza01.webp" alt="Naturaleza muerta con silla de rejilla de Picasso: obra ovalada con un hule que imita una silla de esterilla, enmarcada con una soga" width="1280" height="977" loading="lazy">
+          <figcaption>Pablo Picasso, <cite>Naturaleza muerta con silla de rejilla</cite>, 1912. Considerado el primer collage de la historia del arte.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- INFLUENCIA -->
+    <section class="seccion seccion--grafito" aria-labelledby="titulo-influencia">
+      <div class="contenedor">
+        <h2 class="titulo-seccion" id="titulo-influencia">Influencia</h2>
+        <p class="bajada">Al demostrar que un cuadro podía tener sus propias reglas, el cubismo inspiró a casi todas las vanguardias que vinieron después.</p>
+
+        <div class="planos reveal">
+          <article class="plano">
+            <h3>Futurismo</h3>
+            <p>Italia, 1909. Tomó la fragmentación cubista para representar la velocidad y el movimiento.</p>
+          </article>
+          <article class="plano">
+            <h3>Orfismo</h3>
+            <p>Robert y Sonia Delaunay sumaron colores intensos y círculos al lenguaje cubista.</p>
+          </article>
+          <article class="plano">
+            <h3>Constructivismo</h3>
+            <p>Rusia. Llevó los planos geométricos a la escultura, la arquitectura y el diseño gráfico.</p>
+          </article>
+          <article class="plano">
+            <h3>Suprematismo</h3>
+            <p>Kazimir Malévich redujo la pintura a formas geométricas puras sobre fondo blanco.</p>
+          </article>
+          <article class="plano">
+            <h3>Neoplasticismo</h3>
+            <p>Piet Mondrian pasó por el cubismo antes de llegar a sus líneas rectas y colores primarios.</p>
+          </article>
+          <article class="plano">
+            <h3>Art Déco</h3>
+            <p>En los años 20 y 30 la geometría cubista llegó a afiches, joyas, muebles y edificios.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LLAMADO A LA ACCIÓN -->
+    <section class="seccion" aria-labelledby="titulo-cta">
+      <div class="contenedor">
+        <div class="cta reveal">
+          <div>
+            <h2 id="titulo-cta">Conoce a sus creadores</h2>
+            <p>Dos pintores, un mismo taller de ideas.</p>
+          </div>
+          <div class="cta__botones">
+            <a class="btn btn--claro" href="picasso.html">Pablo Picasso</a>
+            <a class="btn btn--contorno" href="braque.html">Georges Braque</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER (igual en todas las páginas) ================= -->
+  <footer class="site-footer">
+    <div class="contenedor">
+      <p class="site-footer__copy">Cubismo 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

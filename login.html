@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Iniciar sesión en el sitio Cubismo.">
+  <title>Cubismo | Iniciar sesión</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+
+  <!-- Tipografías de Google Fonts: Alegreya (títulos) y Open Sans (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,700;0,800;1,400;1,700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap">
+
+  <!-- Hoja de estilos única del sitio -->
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <!-- JavaScript externo: "defer" lo ejecuta cuando el HTML terminó de cargarse -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Link oculto para saltar el menú con el teclado (accesibilidad) -->
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= HEADER (igual en todas las páginas) ================= -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">
+        <img src="img/logocubismo.png" alt="Logo de Cubismo: retrato de perfil en estilo cubista, en blanco y negro. Ir al inicio" width="64" height="64">
+      </a>
+
+      <!-- Botón hamburguesa: solo se ve en mobile y tablet -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+      </button>
+
+      <!-- Agrupa navegación y botones para poder desplegarlos juntos en mobile -->
+      <div class="menu" id="menu-principal">
+        <nav class="nav-principal" aria-label="Menú principal">
+          <ul>
+            <li><a href="cubismo.html">Cubismo</a></li>
+            <li><a href="picasso.html" title="Pablo Picasso">Artista 1</a></li>
+            <li><a href="braque.html" title="Georges Braque">Artista 2</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="exclusivo.html">Exclusivo</a></li>
+          </ul>
+        </nav>
+        <div class="header-botones">
+          <a class="btn btn--claro" href="contacto.html">Contacto</a>
+          <a class="btn btn--claro" href="login.html">Iniciar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <section class="seccion" aria-labelledby="titulo-login">
+      <div class="contenedor">
+
+        <!-- LOGIN DESACTIVADO
+             El inicio de sesión funciona con PHP (login.php), que por ahora
+             está desactivado. Mientras tanto, al enviar el
+             formulario main.js muestra un aviso en lugar de enviarlo. -->
+        <form class="formulario formulario--angosto reveal" action="#" method="post" data-desactivado>
+          <h1 class="titulo-seccion" id="titulo-login">Iniciar sesión</h1>
+
+          <div class="campo">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="email" placeholder="nombre@ejemplo.com" required maxlength="80" autocomplete="email">
+          </div>
+
+          <div class="campo">
+            <label for="login-clave">Contraseña</label>
+            <input type="password" id="login-clave" name="clave" placeholder="Mínimo 8 caracteres" required minlength="8" maxlength="30" autocomplete="current-password" aria-describedby="ayuda-clave">
+            <span class="campo__ayuda" id="ayuda-clave">Entre 8 y 30 caracteres.</span>
+          </div>
+
+          <button class="btn btn--violeta" type="submit">Ingresar</button>
+
+          <!-- Aviso que muestra main.js al enviar (role="status" lo anuncia a lectores de pantalla) -->
+          <div class="aviso" role="status" hidden>
+            <p>El inicio de sesión no está disponible por el momento.</p>
+          </div>
+
+          <p class="formulario__nota">¿No tienes cuenta? <a href="contacto.html">Escríbenos</a> y te contamos cómo sumarte.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER (igual en todas las páginas) ================= -->
+  <footer class="site-footer">
+    <div class="contenedor">
+      <p class="site-footer__copy">Cubismo 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

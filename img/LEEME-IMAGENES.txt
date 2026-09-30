@@ -1,0 +1,42 @@
+IMÁGENES DEL SITIO CUBISMO
+==========================
+Todas las imágenes actuales son PLACEHOLDERS (formas geométricas con el nombre
+del archivo). Reemplazá cada una por la imagen real usando EXACTAMENTE el mismo
+nombre. Tamaños sugeridos entre paréntesis (no hace falta que sean exactos).
+
+LOGO
+- logo.png ............................ Retrato de perfil estilo cubista en blanco y negro, con marco blanco y borde decorativo (cuadrado, 400x400, PNG).
+
+FONDOS DE LOS HERO (horizontales, 1920x1080 el de la home y 1920x900 el resto)
+- herohome02.jpg ...................... HOME (ya agregada; tarjetas de la home: picassoybraquesartistas.jpg, galeria.jpg, exclusivo.jpg). La pintura cubista colorida del diseño (rostros fragmentados, violín; rojo, naranja, ocre, celeste, negro y crema).
+- hero-historia.jpg ................... cubismo.html. Detalle de una obra del cubismo analítico (ej.: Picasso, "Retrato de Daniel-Henry Kahnweiler", 1910).
+- hero-picasso.jpg .................... picasso.html. Detalle de una obra de Picasso (ej.: "Tres músicos", 1921).
+- hero-braque.jpg ..................... braque.html. Detalle de una obra de Braque (ej.: "El portugués", 1911).
+- hero-galeria.jpg .................... galeria.html. Detalle de Juan Gris (ej.: "Guitarra y botella", o cualquier naturaleza muerta).
+- hero-exclusivo.jpg .................. exclusivo.html. Detalle de Robert o Sonia Delaunay (ej.: "Ritmo", "Formas circulares").
+- hero-contacto.jpg ................... contacto.html y enviar.php. Detalle de Fernand Léger (ej.: "Los constructores", 1950).
+- hero-login.jpg ...................... login.html. Detalle de Jean Metzinger o Albert Gleizes (ej.: Metzinger, "La hora del té", 1911).
+
+RETRATOS (verticales, 800x1000)
+- picasso-retrato.jpg ................. Fotografía de Pablo Picasso.
+- braque-retrato.jpg .................. Fotografía de Georges Braque.
+
+OBRAS
+- picasso-demoiselles-avignon.jpg ..... Picasso, "Les Demoiselles d'Avignon", 1907.
+- picasso-retrato-vollard.jpg ......... Picasso, "Retrato de Ambroise Vollard", 1910.
+- picasso-naturaleza-muerta-silla.jpg . Picasso, "Naturaleza muerta con silla de rejilla", 1912.
+- picasso-guernica.jpg ................ Picasso, "Guernica", 1937 (horizontal).
+- braque-casas-estaque.jpg ............ Braque, "Casas en L'Estaque", 1908.
+- braque-violin-candelero.jpg ......... Braque, "Violín y candelero", 1910.
+- braque-hombre-guitarra.jpg .......... Braque, "Hombre con guitarra", 1911-1912.
+- braque-compotera-vaso.jpg ........... Braque, "Compotera y vaso", 1912 (primer papier collé).
+- gris-retrato-picasso.jpg ............ Juan Gris, "Retrato de Pablo Picasso", 1912.
+- gris-naturaleza-muerta-mantel.jpg ... Juan Gris, "Naturaleza muerta con mantel a cuadros", 1915.
+- leger-desnudos-bosque.jpg ........... Fernand Léger, "Desnudos en el bosque", 1909-1911.
+- leger-la-ciudad.jpg ................. Fernand Léger, "La ciudad", 1919.
+- delaunay-torre-eiffel.jpg ........... Robert Delaunay, "Torre Eiffel", 1911.
+- diseno-afiche-cubista.jpg ........... Afiche Art Déco de inspiración cubista (ej.: A. M. Cassandre, "Nord Express", 1927).
+
+DÓNDE CONSEGUIRLAS: Wikimedia Commons, Google Arts & Culture o las webs de los
+museos (MoMA, Reina Sofía, Art Institute of Chicago, etc.). Si cambiás mucho el
+formato de una imagen, conviene actualizar los atributos width/height del <img>.

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contenido exclusivo: juego de preguntas para poner a prueba lo que aprendiste sobre el cubismo, sus artistas y sus obras.">
+  <title>Cubismo | Exclusivo</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+
+  <!-- Tipografías de Google Fonts: Alegreya (títulos) y Open Sans (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,700;0,800;1,400;1,700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap">
+
+  <!-- Hoja de estilos única del sitio -->
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <!-- JavaScript externo: "defer" lo ejecuta cuando el HTML terminó de cargarse -->
+  <script src="js/main.js" defer></script>
+
+  <!-- Juego de preguntas: solo se usa en esta página -->
+  <script src="js/quiz.js" defer></script>
+</head>
+<body>
+
+  <!-- Link oculto para saltar el menú con el teclado (accesibilidad) -->
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= HEADER (igual en todas las páginas) ================= -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">
+        <img src="img/logocubismo.png" alt="Logo de Cubismo: retrato de perfil en estilo cubista, en blanco y negro. Ir al inicio" width="64" height="64">
+      </a>
+
+      <!-- Botón hamburguesa: solo se ve en mobile y tablet -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+      </button>
+
+      <!-- Agrupa navegación y botones para poder desplegarlos juntos en mobile -->
+      <div class="menu" id="menu-principal">
+        <nav class="nav-principal" aria-label="Menú principal">
+          <ul>
+            <li><a href="cubismo.html">Cubismo</a></li>
+            <li><a href="picasso.html" title="Pablo Picasso">Artista 1</a></li>
+            <li><a href="braque.html" title="Georges Braque">Artista 2</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="exclusivo.html">Exclusivo</a></li>
+          </ul>
+        </nav>
+        <div class="header-botones">
+          <a class="btn btn--claro" href="contacto.html">Contacto</a>
+          <a class="btn btn--claro" href="login.html">Iniciar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO interno (40vh) -->
+    <section class="hero hero--interna hero--exclusivo">
+      <div class="hero__contenido">
+        <h1 class="hero__titulo">¿Cuánto aprendiste?</h1>
+      </div>
+    </section>
+
+    <!-- QUIZ EXCLUSIVO
+         Solo está el contenedor: las preguntas y pantallas las genera js/quiz.js.
+         PHP desactivado: el juego está abierto para todos. -->
+    <section class="seccion" aria-label="Juego de preguntas sobre el cubismo">
+      <div class="contenedor">
+        <div class="quiz" id="quiz">
+          <noscript>
+            <p>Este juego necesita JavaScript activado para funcionar.</p>
+          </noscript>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER (igual en todas las páginas) ================= -->
+  <footer class="site-footer">
+    <div class="contenedor">
+      <p class="site-footer__copy">Cubismo 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

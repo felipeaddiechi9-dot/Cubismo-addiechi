@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pablo Picasso: biografía, su rol en el cubismo, obras clave y línea de tiempo.">
+  <title>Cubismo | Artista 1: Pablo Picasso</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+
+  <!-- Tipografías de Google Fonts: Alegreya (títulos) y Open Sans (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,700;0,800;1,400;1,700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap">
+
+  <!-- Hoja de estilos única del sitio -->
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <!-- JavaScript externo: "defer" lo ejecuta cuando el HTML terminó de cargarse -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Link oculto para saltar el menú con el teclado (accesibilidad) -->
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= HEADER (igual en todas las páginas) ================= -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">
+        <img src="img/logocubismo.png" alt="Logo de Cubismo: retrato de perfil en estilo cubista, en blanco y negro. Ir al inicio" width="64" height="64">
+      </a>
+
+      <!-- Botón hamburguesa: solo se ve en mobile y tablet -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+      </button>
+
+      <!-- Agrupa navegación y botones para poder desplegarlos juntos en mobile -->
+      <div class="menu" id="menu-principal">
+        <nav class="nav-principal" aria-label="Menú principal">
+          <ul>
+            <li><a href="cubismo.html">Cubismo</a></li>
+            <li><a href="picasso.html" title="Pablo Picasso">Artista 1</a></li>
+            <li><a href="braque.html" title="Georges Braque">Artista 2</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="exclusivo.html">Exclusivo</a></li>
+          </ul>
+        </nav>
+        <div class="header-botones">
+          <a class="btn btn--claro" href="contacto.html">Contacto</a>
+          <a class="btn btn--claro" href="login.html">Iniciar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO interno (40vh) -->
+    <section class="hero hero--interna hero--picasso">
+      <div class="hero__contenido">
+        <h1 class="hero__titulo">Pablo Picasso</h1>
+      </div>
+    </section>
+
+    <!-- BIOGRAFÍA -->
+    <section class="seccion" aria-labelledby="titulo-bio">
+      <div class="contenedor dos-columnas">
+        <article class="texto reveal">
+          <h2 class="titulo-seccion" id="titulo-bio">Biografía</h2>
+          <p class="bajada">Pablo Ruiz Picasso nació el 25 de octubre de 1881 en Málaga, España. Es uno de los artistas más influyentes del siglo XX.</p>
+          <p>Hijo de un profesor de dibujo, mostró talento desde muy chico y estudió en Barcelona y Madrid. En 1904 se instaló en París, en el taller del <strong>Bateau-Lavoir</strong>, en Montmartre. Antes del cubismo pasó por el <strong>período azul</strong> (1901–1904), de tonos fríos y temas tristes, y el <strong>período rosa</strong> (1904–1906), poblado de acróbatas y arlequines.</p>
+          <p>Trabajó en pintura, escultura, grabado, cerámica y escenografía, y nunca dejó de cambiar de estilo. Murió el 8 de abril de 1973 en Mougins, Francia, dejando miles de obras.</p>
+        </article>
+
+        <figure class="figura-cubista figura-cubista--recta reveal">
+          <img src="img/pica02.jpg" alt="Fotografía en blanco y negro de Pablo Picasso ya mayor, de mirada intensa, con el mentón apoyado sobre el brazo y un buzo blanco" width="803" height="997" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ROL EN EL CUBISMO -->
+    <section class="seccion seccion--clara" aria-labelledby="titulo-rol">
+      <div class="contenedor">
+        <article class="texto reveal">
+          <h2 class="titulo-seccion" id="titulo-rol">Su rol en el cubismo</h2>
+          <p class="bajada">Picasso es, junto con Braque, el creador del cubismo.</p>
+          <p>Con <cite>Les Demoiselles d'Avignon</cite> (1907) dio el primer golpe: figuras deformadas, rostros inspirados en máscaras africanas y un espacio sin profundidad. Desde 1908 empezó un diálogo diario con Georges Braque; durante seis años se visitaron casi a diario y avanzaron juntos hacia el <strong>cubismo analítico</strong>.</p>
+          <p>En 1912 pegó un hule impreso sobre una tela y creó <cite>Naturaleza muerta con silla de rejilla</cite>, considerado el <strong>primer collage</strong> de la historia del arte, que abrió la etapa del <strong>cubismo sintético</strong>. También llevó el cubismo a la escultura con sus construcciones de cartón y chapa, como <cite>Guitarra</cite> (1912).</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- OBRAS CLAVE -->
+    <section class="seccion" aria-labelledby="titulo-obras">
+      <div class="contenedor">
+        <h2 class="titulo-seccion" id="titulo-obras">Obras clave</h2>
+
+        <div class="obras">
+          <article class="obra reveal">
+            <figure class="figura-cubista figura-cubista--recta">
+              <img src="img/lasseñoritas.webp" alt="Les Demoiselles d'Avignon: cinco mujeres desnudas de cuerpos angulosos, dos con rostros de máscara africana" width="1500" height="1554" loading="lazy">
+              <figcaption>Óleo sobre lienzo, 243,9 × 233,7 cm.</figcaption>
+            </figure>
+            <h3>Les Demoiselles d'Avignon</h3>
+            <span class="obra__datos">1907 · MoMA, Nueva York</span>
+            <p>El cuadro que anunció el cubismo. Rompe con la perspectiva renacentista y mezcla puntos de vista. Escandalizó incluso a los amigos del pintor y no se exhibió en público hasta 1916.</p>
+          </article>
+
+          <article class="obra reveal">
+            <figure class="figura-cubista figura-cubista--recta">
+              <img src="img/retrato.webp" alt="Retrato de Ambroise Vollard: el rostro del marchante emerge entre facetas grises y ocres" width="365" height="532" loading="lazy">
+              <figcaption>Óleo sobre lienzo.</figcaption>
+            </figure>
+            <h3>Retrato de Ambroise Vollard</h3>
+            <span class="obra__datos">1910 · Museo Pushkin, Moscú</span>
+            <p>Un ejemplo perfecto del cubismo analítico: el rostro del famoso marchante se reconoce entre cientos de pequeños planos grises y ocres que parecen cristales rotos.</p>
+          </article>
+
+          <article class="obra reveal">
+            <figure class="figura-cubista figura-cubista--recta">
+              <img src="img/guernica.webp" alt="Guernica: mural en blanco, negro y grises con un toro, un caballo herido, una madre con su hijo muerto y figuras que gritan" width="1500" height="680" loading="lazy">
+              <figcaption>Óleo sobre lienzo, 349,3 × 776,6 cm.</figcaption>
+            </figure>
+            <h3>Guernica</h3>
+            <span class="obra__datos">1937 · Museo Reina Sofía, Madrid</span>
+            <p>Pintado tras el bombardeo de la ciudad vasca durante la Guerra Civil Española. Usa el lenguaje cubista, ya maduro, para gritar contra la guerra. Es una de las obras más reconocidas del siglo XX.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LÍNEA DE TIEMPO -->
+    <section class="seccion seccion--blanca" aria-labelledby="titulo-linea">
+      <div class="contenedor">
+        <h2 class="titulo-seccion" id="titulo-linea">Línea de tiempo</h2>
+
+        <ol class="linea-tiempo reveal">
+          <li><time datetime="1881">1881</time><p>Nace en Málaga, España, el 25 de octubre.</p></li>
+          <li><time datetime="1901">1901</time><p>Comienza el período azul.</p></li>
+          <li><time datetime="1904">1904</time><p>Se instala en el Bateau-Lavoir de París. Empieza el período rosa.</p></li>
+          <li><time datetime="1907">1907</time><p>Pinta <cite>Les Demoiselles d'Avignon</cite> y conoce a Georges Braque.</p></li>
+          <li><time datetime="1910">1910</time><p>Plena etapa analítica: <cite>Retrato de Ambroise Vollard</cite>.</p></li>
+          <li><time datetime="1912">1912</time><p>Crea el primer collage: <cite>Naturaleza muerta con silla de rejilla</cite>.</p></li>
+          <li><time datetime="1937">1937</time><p>Pinta <cite>Guernica</cite> para el Pabellón Español de la Exposición Internacional de París.</p></li>
+          <li><time datetime="1973">1973</time><p>Muere en Mougins, Francia, el 8 de abril, a los 91 años.</p></li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER (igual en todas las páginas) ================= -->
+  <footer class="site-footer">
+    <div class="contenedor">
+      <p class="site-footer__copy">Cubismo 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

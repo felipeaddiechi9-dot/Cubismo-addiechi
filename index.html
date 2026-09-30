@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sitio sobre el Cubismo, la vanguardia artística creada por Pablo Picasso y Georges Braque en París entre 1907 y 1914.">
+  <title>Cubismo | Inicio</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+
+  <!-- Tipografías de Google Fonts: Alegreya (títulos) y Open Sans (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,700;0,800;1,400;1,700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap">
+
+  <!-- Hoja de estilos única del sitio -->
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <!-- JavaScript externo: "defer" lo ejecuta cuando el HTML terminó de cargarse -->
+  <script src="js/main.js" defer></script>
+</head>
+<body class="pagina-home">
+
+  <!-- Link oculto para saltar el menú con el teclado (accesibilidad) -->
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= HEADER (igual en todas las páginas) ================= -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">
+        <img src="img/logocubismo.png" alt="Logo de Cubismo: retrato de perfil en estilo cubista, en blanco y negro. Ir al inicio" width="64" height="64">
+      </a>
+
+      <!-- Botón hamburguesa: solo se ve en mobile y tablet -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+      </button>
+
+      <!-- Agrupa navegación y botones para poder desplegarlos juntos en mobile -->
+      <div class="menu" id="menu-principal">
+        <nav class="nav-principal" aria-label="Menú principal">
+          <ul>
+            <li><a href="cubismo.html">Cubismo</a></li>
+            <li><a href="picasso.html" title="Pablo Picasso">Artista 1</a></li>
+            <li><a href="braque.html" title="Georges Braque">Artista 2</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="exclusivo.html">Exclusivo</a></li>
+          </ul>
+        </nav>
+        <div class="header-botones">
+          <a class="btn btn--claro" href="contacto.html">Contacto</a>
+          <a class="btn btn--claro" href="login.html">Iniciar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO: imagen de fondo a ancho completo con el H1 en un bloque negro -->
+    <section class="hero hero--home">
+      <div class="hero__contenido">
+        <h1 class="hero__titulo">Cubismo</h1>
+      </div>
+    </section>
+
+    <!-- INTRODUCCIÓN -->
+    <section class="seccion" aria-labelledby="titulo-intro">
+      <div class="contenedor dos-columnas">
+        <div class="texto reveal">
+          <h2 class="titulo-seccion" id="titulo-intro">Romper la mirada</h2>
+          <p class="bajada">Entre 1907 y 1914, en París, dos jóvenes pintores decidieron que un cuadro no tenía por qué imitar lo que ve el ojo desde un solo lugar.</p>
+          <p>Pablo Picasso y Georges Braque <strong>descompusieron los objetos en planos geométricos</strong>, los mostraron desde varios puntos de vista a la vez y redujeron la paleta a ocres, grises y verdes. Más tarde pegaron papeles, diarios y tela sobre el lienzo. Así nació el <strong>Cubismo</strong>, la vanguardia que abrió la puerta al arte moderno.</p>
+          <a class="btn btn--contorno" href="cubismo.html">Qué es el cubismo</a>
+        </div>
+
+        <figure class="figura-cubista figura-cubista--recta reveal">
+          <img src="img/picasoybraques.jpg" alt="Fotografía en blanco y negro de Georges Braque, alto y de pelo blanco, conversando con Pablo Picasso, que gesticula con la mano, en un taller" width="600" height="594" loading="lazy">
+          <figcaption>Pablo Picasso y Georges Braque, 1954</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FECHAS CLAVE -->
+    <section class="seccion seccion--clara" aria-label="Tres fechas clave">
+      <div class="contenedor">
+        <ul class="cifras reveal">
+          <li><span class="cifras__numero">1907</span> Picasso pinta <cite>Les Demoiselles d'Avignon</cite>.</li>
+          <li><span class="cifras__numero">1908</span> Un crítico habla de "cubos" ante los paisajes de Braque.</li>
+          <li><span class="cifras__numero">1912</span> Aparecen el collage y el papier collé.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TARJETAS DE ACCESO -->
+    <section class="seccion seccion--grafito" aria-labelledby="titulo-recorrido">
+      <div class="contenedor">
+        <h2 class="titulo-seccion" id="titulo-recorrido">Recorre el sitio</h2>
+        <p class="bajada">Conoce a sus creadores, mira las obras más importantes y descubre curiosidades que no suelen contarse.</p>
+
+        <div class="tarjetas reveal">
+          <article class="tarjeta">
+            <img class="tarjeta__imagen" src="img/picassoybraquesartistas.jpg" alt="Fotografía en blanco y negro de Georges Braque y Pablo Picasso, ya mayores, sentados uno junto al otro" width="244" height="206" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3>Artistas</h3>
+              <p>Picasso y Braque: dos pintores que trabajaron "atados como alpinistas".</p>
+              <div class="tarjeta__acciones">
+                <a class="btn btn--claro" href="picasso.html">Picasso</a>
+                <a class="btn btn--contorno" href="braque.html">Braque</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="tarjeta">
+            <img class="tarjeta__imagen" src="img/galeria.jpg" alt="Ilustración en blanco y negro de una figura negra que corre entre manos blancas que intentan alcanzarla, con planos geométricos de fondo" width="1080" height="1243" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3>Galería</h3>
+              <p>Doce obras de Picasso, Braque, Gris, Léger y Delaunay para ver en detalle.</p>
+              <div class="tarjeta__acciones">
+                <a class="btn btn--claro" href="galeria.html">Ver galería</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="tarjeta">
+            <img class="tarjeta__imagen" src="img/exclusivo.jpg" alt="Ilustración en blanco y negro de una figura hecha de piezas de rompecabezas que sostiene en la mano la pieza que contiene uno de sus ojos" width="450" height="637" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3>Exclusivo</h3>
+              <p>Curiosidades y la huella del cubismo en el diseño y la publicidad actual.</p>
+              <div class="tarjeta__acciones">
+                <a class="btn btn--claro" href="exclusivo.html">Entrar</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER (igual en todas las páginas) ================= -->
+  <footer class="site-footer">
+    <div class="contenedor">
+      <p class="site-footer__copy">Cubismo 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

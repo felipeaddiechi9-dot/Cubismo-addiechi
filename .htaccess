@@ -1,0 +1,22 @@
+# ==========================================================================
+# .htaccess — Configuración de Apache (XAMPP) para esta carpeta
+# ==========================================================================
+
+# 1) Sin caché vieja: el navegador puede guardar las páginas, pero antes de
+#    usarlas le pregunta al servidor si cambiaron. Así los cambios se ven
+#    al recargar, sin tener que borrar la caché a mano.
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-cache"
+</IfModule>
+
+# 2) PHP DESACTIVADO: las direcciones viejas .php llevan a las páginas .html
+#    AL REACTIVAR PHP: borrar este bloque.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Carpeta del sitio dentro de htdocs (http://localhost/CUBISMO/)
+  RewriteBase /CUBISMO/
+  RewriteRule ^exclusivo\.php$ exclusivo.html [R=302,L]
+  RewriteRule ^login\.php$     login.html     [R=302,L]
+  RewriteRule ^logout\.php$    index.html     [R=302,L]
+  RewriteRule ^enviar\.php$    contacto.html  [R=302,L]
+</IfModule>

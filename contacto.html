@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulario de contacto del sitio Cubismo: consultas, sugerencias y comentarios.">
+  <title>Cubismo | Contacto</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+
+  <!-- Tipografías de Google Fonts: Alegreya (títulos) y Open Sans (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,700;0,800;1,400;1,700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap">
+
+  <!-- Hoja de estilos única del sitio -->
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <!-- JavaScript externo: "defer" lo ejecuta cuando el HTML terminó de cargarse -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Link oculto para saltar el menú con el teclado (accesibilidad) -->
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= HEADER (igual en todas las páginas) ================= -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">
+        <img src="img/logocubismo.png" alt="Logo de Cubismo: retrato de perfil en estilo cubista, en blanco y negro. Ir al inicio" width="64" height="64">
+      </a>
+
+      <!-- Botón hamburguesa: solo se ve en mobile y tablet -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+      </button>
+
+      <!-- Agrupa navegación y botones para poder desplegarlos juntos en mobile -->
+      <div class="menu" id="menu-principal">
+        <nav class="nav-principal" aria-label="Menú principal">
+          <ul>
+            <li><a href="cubismo.html">Cubismo</a></li>
+            <li><a href="picasso.html" title="Pablo Picasso">Artista 1</a></li>
+            <li><a href="braque.html" title="Georges Braque">Artista 2</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="exclusivo.html">Exclusivo</a></li>
+          </ul>
+        </nav>
+        <div class="header-botones">
+          <a class="btn btn--claro" href="contacto.html">Contacto</a>
+          <a class="btn btn--claro" href="login.html">Iniciar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <section class="seccion" aria-labelledby="titulo-form">
+      <div class="contenedor">
+
+        <!-- FORMULARIO DE CONTACTO
+             method="post": los datos viajan ocultos en el cuerpo de la petición.
+             La validación la hace el navegador con atributos HTML5
+             (required, type, pattern, minlength, maxlength).
+             PHP DESACTIVADO: el envío lo hace enviar.php, que por ahora está
+             desactivado. Mientras tanto action="#" y
+             data-desactivado hacen que main.js muestre un aviso al enviar.
+             Para reactivar: action="enviar.php" y quitar data-desactivado. -->
+        <form class="formulario formulario--centrado reveal" action="#" method="post" data-desactivado>
+          <h1 class="titulo-seccion" id="titulo-form">Contacto</h1>
+
+          <div class="formulario__grupo">
+            <div class="campo">
+              <label for="nombre">Nombre *</label>
+              <!-- pattern: solo letras (con tildes), espacios y apóstrofos -->
+              <input type="text" id="nombre" name="nombre" placeholder="Ej: Juana" required minlength="2" maxlength="40" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü' ]{2,40}" autocomplete="given-name" title="Solo letras, entre 2 y 40 caracteres">
+            </div>
+
+            <div class="campo">
+              <label for="apellido">Apellido *</label>
+              <input type="text" id="apellido" name="apellido" placeholder="Ej: Gris" required minlength="2" maxlength="40" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü' ]{2,40}" autocomplete="family-name" title="Solo letras, entre 2 y 40 caracteres">
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="nombre@ejemplo.com" required maxlength="80" autocomplete="email">
+          </div>
+
+          <div class="campo">
+            <label for="telefono">Teléfono <span class="campo__opcional">(opcional)</span></label>
+            <!-- pattern: números, espacios, guiones y el signo + (entre 8 y 20 caracteres) -->
+            <input type="tel" id="telefono" name="telefono" placeholder="Ej: +54 11 1234-5678" minlength="8" maxlength="20" pattern="[0-9+ \-]{8,20}" autocomplete="tel" title="Solo números, espacios, guiones y el signo +" aria-describedby="ayuda-telefono">
+            <span class="campo__ayuda" id="ayuda-telefono">Solo números, espacios, guiones y el signo +.</span>
+          </div>
+
+          <div class="campo">
+            <label for="motivo">Motivo *</label>
+            <select id="motivo" name="motivo" required>
+              <option value="" selected disabled>Elige una opción</option>
+              <option value="consulta">Consulta general</option>
+              <option value="academico">Trabajo práctico o investigación</option>
+              <option value="sugerencia">Sugerencia de contenido</option>
+              <option value="error">Reportar un error</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="mensaje">Mensaje *</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje (mínimo 10 caracteres)" required minlength="10" maxlength="1000" aria-describedby="ayuda-mensaje"></textarea>
+            <span class="campo__ayuda" id="ayuda-mensaje">Entre 10 y 1000 caracteres.</span>
+          </div>
+
+          <div class="campo campo--check">
+            <input type="checkbox" id="acepta" name="acepta" value="si" required>
+            <label for="acepta">Acepto que mis datos se usen solo para responder esta consulta. *</label>
+          </div>
+
+          <button class="btn btn--violeta" type="submit">Enviar mensaje</button>
+
+          <!-- Aviso que muestra main.js al enviar (role="status" lo anuncia a lectores de pantalla) -->
+          <div class="aviso" role="status" hidden>
+            <p>El envío de mensajes no está disponible por el momento.</p>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER (igual en todas las páginas) ================= -->
+  <footer class="site-footer">
+    <div class="contenedor">
+      <p class="site-footer__copy">Cubismo 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>

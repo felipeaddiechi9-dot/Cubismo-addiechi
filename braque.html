@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Georges Braque: biografía, su trabajo junto a Picasso, la invención del papier collé y sus obras clave.">
+  <title>Cubismo | Artista 2: Georges Braque</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+
+  <!-- Tipografías de Google Fonts: Alegreya (títulos) y Open Sans (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,700;0,800;1,400;1,700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap">
+
+  <!-- Hoja de estilos única del sitio -->
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <!-- JavaScript externo: "defer" lo ejecuta cuando el HTML terminó de cargarse -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Link oculto para saltar el menú con el teclado (accesibilidad) -->
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= HEADER (igual en todas las páginas) ================= -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">
+        <img src="img/logocubismo.png" alt="Logo de Cubismo: retrato de perfil en estilo cubista, en blanco y negro. Ir al inicio" width="64" height="64">
+      </a>
+
+      <!-- Botón hamburguesa: solo se ve en mobile y tablet -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+        <span class="menu-toggle__barra"></span>
+      </button>
+
+      <!-- Agrupa navegación y botones para poder desplegarlos juntos en mobile -->
+      <div class="menu" id="menu-principal">
+        <nav class="nav-principal" aria-label="Menú principal">
+          <ul>
+            <li><a href="cubismo.html">Cubismo</a></li>
+            <li><a href="picasso.html" title="Pablo Picasso">Artista 1</a></li>
+            <li><a href="braque.html" title="Georges Braque">Artista 2</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="exclusivo.html">Exclusivo</a></li>
+          </ul>
+        </nav>
+        <div class="header-botones">
+          <a class="btn btn--claro" href="contacto.html">Contacto</a>
+          <a class="btn btn--claro" href="login.html">Iniciar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO interno (40vh) -->
+    <section class="hero hero--interna hero--braque">
+      <div class="hero__contenido">
+        <h1 class="hero__titulo">Georges Braque</h1>
+      </div>
+    </section>
+
+    <!-- BIOGRAFÍA -->
+    <section class="seccion" aria-labelledby="titulo-bio">
+      <div class="contenedor dos-columnas">
+        <article class="texto reveal">
+          <h2 class="titulo-seccion" id="titulo-bio">Biografía</h2>
+          <p class="bajada">Georges Braque nació el 13 de mayo de 1882 en Argenteuil, cerca de París, y creció en el puerto de Le Havre.</p>
+          <p>Su padre y su abuelo eran pintores decoradores, y él aprendió el oficio: imitar vetas de madera y mármol y pintar letras con plantillas. Esos trucos artesanales serían clave en el cubismo. Hacia 1905 se acercó al <strong>fauvismo</strong>, de colores puros y violentos, pero en 1907 la obra de <strong>Cézanne</strong> lo llevó a buscar la estructura y el volumen.</p>
+          <p>En la Primera Guerra Mundial fue herido gravemente en la cabeza (1915) y tardó en volver a pintar. Siguió trabajando naturalezas muertas, interiores de taller y pájaros hasta su muerte, el 31 de agosto de 1963, en París.</p>
+        </article>
+
+        <figure class="figura-cubista figura-cubista--recta reveal">
+          <img src="img/braques01.jpg" alt="Fotografía en blanco y negro de Georges Braque sentado en un sillón, con saco oscuro y pañuelo claro al cuello, mirando a cámara" width="478" height="636" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- JUNTO A PICASSO -->
+    <section class="seccion seccion--clara" aria-labelledby="titulo-picasso">
+      <div class="contenedor">
+        <article class="texto reveal">
+          <h2 class="titulo-seccion" id="titulo-picasso">Junto a Picasso</h2>
+          <p class="bajada">Braque conoció a Picasso a fines de 1907, de la mano del poeta Guillaume Apollinaire. Ver <cite>Les Demoiselles d'Avignon</cite> lo desconcertó y, a la vez, lo desafió.</p>
+          <p>En 1908 pintó en L'Estaque, en el sur de Francia, una serie de paisajes hechos de volúmenes geométricos. El jurado del Salón de Otoño los rechazó y Braque los expuso en la galería de Daniel-Henry Kahnweiler. Al reseñar esa muestra, el crítico Louis Vauxcelles habló de "cubos": había nacido el nombre del movimiento.</p>
+          <p>Entre 1909 y 1914 los dos pintores trabajaron tan cerca que sus cuadros de esa época son difíciles de distinguir. Muchas veces ni siquiera los firmaban en el frente.</p>
+
+          <blockquote class="cita-corta">
+            <p>"Éramos como dos alpinistas atados a la misma cuerda."</p>
+            <footer>— Georges Braque, sobre su trabajo con Picasso</footer>
+          </blockquote>
+
+          <p>La guerra de 1914 terminó con esa colaboración: Braque fue movilizado al frente y, al volver, cada uno siguió su camino.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PAPIER COLLÉ -->
+    <section class="seccion" aria-labelledby="titulo-papier">
+      <div class="contenedor dos-columnas dos-columnas--invertida">
+        <article class="texto reveal">
+          <h2 class="titulo-seccion" id="titulo-papier">La invención del papier collé</h2>
+          <p class="bajada">En septiembre de 1912, en Sorgues, cerca de Aviñón, Braque vio en una tienda un rollo de papel pintado que imitaba madera de roble.</p>
+          <p>Lo compró, recortó unos trozos y los pegó sobre un dibujo al carbón: así creó <cite>Compotera y vaso</cite>, el <strong>primer papier collé</strong> ("papel pegado") de la historia.</p>
+          <p>A diferencia del collage, que puede incorporar cualquier objeto, el papier collé usa <strong>solo papeles recortados</strong>. La técnica permitió separar el color de la forma: el papel aporta el color y la textura, y el dibujo encima aporta la estructura. Picasso la adoptó de inmediato y fue el punto de partida del <strong>cubismo sintético</strong>.</p>
+        </article>
+
+        <figure class="figura-cubista figura-cubista--recta reveal">
+          <img src="img/braquecompo.jpg" alt="Compotera y vaso de Braque: dibujo al carbón de una compotera con uvas y un vaso, con tres tiras de papel que imitan madera pegadas encima" width="604" height="508" loading="lazy">
+          <figcaption>Georges Braque, <cite>Compotera y vaso</cite>, 1912. Carbón y papel pegado sobre papel.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- OBRAS CLAVE -->
+    <section class="seccion seccion--grafito" aria-labelledby="titulo-obras">
+      <div class="contenedor">
+        <h2 class="titulo-seccion" id="titulo-obras">Obras clave</h2>
+
+        <div class="obras">
+          <article class="obra reveal">
+            <figure class="figura-cubista figura-cubista--recta">
+              <img src="img/casasenlaestaque.jpeg" alt="Casas en L'Estaque: casas simplificadas como cubos ocres entre árboles verdes, sin ventanas ni sombras realistas" width="735" height="918" loading="lazy">
+              <figcaption>Óleo sobre lienzo.</figcaption>
+            </figure>
+            <h3>Casas en L'Estaque</h3>
+            <span class="obra__datos">1908 · Kunstmuseum, Berna</span>
+            <p>Las casas se convierten en cubos ocres y los árboles en planos verdes. Es una de las obras que inspiraron el nombre "cubismo".</p>
+          </article>
+
+          <article class="obra reveal">
+            <figure class="figura-cubista figura-cubista--recta">
+              <img src="img/violin.jpg" alt="Violín y candelero: un violín y un candelabro fragmentados en planos grises y marrones que se funden con el fondo" width="595" height="744" loading="lazy">
+              <figcaption>Óleo sobre lienzo.</figcaption>
+            </figure>
+            <h3>Violín y candelero</h3>
+            <span class="obra__datos">1910 · SFMOMA, San Francisco</span>
+            <p>Cubismo analítico en estado puro: el violín y el candelero se desarman en facetas grises y marrones, y el espacio se vuelve casi plano.</p>
+          </article>
+
+          <article class="obra reveal">
+            <figure class="figura-cubista figura-cubista--recta">
+              <img src="img/guitarra.jpg" alt="Hombre con guitarra de Braque: figura sentada descompuesta en planos marrones, con una soga y un clavo pintados en la parte superior izquierda" width="554" height="800" loading="lazy">
+              <figcaption>Óleo sobre lienzo.</figcaption>
+            </figure>
+            <h3>Hombre con guitarra</h3>
+            <span class="obra__datos">1911–1912 · MoMA, Nueva York</span>
+            <p>La figura casi desaparece entre los planos. Braque suma letras, números y detalles realistas como pistas para que el espectador reconstruya la escena.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LLAMADO A LA ACCIÓN -->
+    <section class="seccion" aria-labelledby="titulo-cta">
+      <div class="contenedor">
+        <div class="cta reveal">
+          <div>
+            <h2 id="titulo-cta">Mira las obras en grande</h2>
+            <p>Picasso, Braque, Gris, Léger y Delaunay en una sola galería.</p>
+          </div>
+          <div class="cta__botones">
+            <a class="btn btn--claro" href="galeria.html">Ver galería</a>
+            <a class="btn btn--contorno" href="picasso.html">Artista 1: Picasso</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER (igual en todas las páginas) ================= -->
+  <footer class="site-footer">
+    <div class="contenedor">
+      <p class="site-footer__copy">Cubismo 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>
